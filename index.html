@@ -1,132 +1,737 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Grid activity</title>
-    <!-- <link rel="stylesheet" href="style.css"> -->
-    <style>
-        .main{
-    display: grid;
-    grid-template-columns: 5.5cm 5.5cm 5.5cm 5.5cm 5.5cm 5.5cm 5.5cm;
-    grid-template-rows: 1.8cm 1.8cm 1.8cm 10.5cm 1.8cm;
-    gap: 10px;
-}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>NEXUS EVENTS | Black & White Event Management</title>
+  <!-- Google Fonts: Professional Sans & Serif pair -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    /* ---------- RESET & BASE (NO BORDER RADIUS, NO GRADIENTS) ---------- */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-.d1{
-    grid-column: 1/2;
-    grid-row: 1/4;
-    align-content: center;
-    background-color: green;
-    text-align: center;
-    color: white;
-    font-size: 20px;
-    border: 2px solid black;
-    /* margin-left: 15px; */
-}
+    body {
+      background-color: #000000;
+      color: #ffffff;
+      font-family: 'Inter', sans-serif;
+      line-height: 1.5;
+      scroll-behavior: smooth;
+    }
 
-.d2{
-    grid-column: 2/6;
-    grid-row: 1/2;
-    border: 2px solid black;
-    /* height: 50px; */
-    align-content: center;
-    /* background-color: aqua; */
-    text-align: center;
-}
+    /* Typography - strictly black/white, sharp edges */
+    h1, h2, h3, h4, .logo, .nav-links a, .btn, .stat-number, .service-title, .testimonial-author {
+      font-family: 'Inter', sans-serif;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
 
-.d3{
-    grid-column: 2/5;
-    grid-row: 2/3;
-    border: 2px solid black;
-    align-content: center;
-    text-align: center;
+    .serif-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 400;
+      font-style: italic;
+    }
 
-}
+    /* Containers & structure */
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 40px;
+    }
 
-.d4{
-    grid-column-start: 2;
-    border: 2px solid black;
-    align-content: center;
-    text-align: center;
-}
+    /* Buttons & interactive — no radius, no gradient, pure B&W */
+    .btn {
+      display: inline-block;
+      background-color: #ffffff;
+      color: #000000;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 1rem;
+      padding: 16px 36px;
+      border: 2px solid #ffffff;
+      transition: all 0.2s ease;
+      text-align: center;
+      cursor: pointer;
+      letter-spacing: 0.5px;
+    }
 
-.d5{
-    grid-column-start: 3;
-    border: 2px solid black;
-    text-align: center;
-    align-content: center;
-}
+    .btn-dark {
+      background-color: #000000;
+      color: #ffffff;
+      border: 2px solid #ffffff;
+    }
 
-.d6{
-    grid-column-start: 4 ;
-    border: 2px solid black;
-    align-content: center;
-    text-align: center;
-}
+    .btn-dark:hover {
+      background-color: #ffffff;
+      color: #000000;
+    }
 
-.d7{
-    grid-column-start: 5 ;
-    border: 2px solid black;
-    align-content: center;
-    text-align: center;
-}
+    .btn-light:hover {
+      background-color: #000000;
+      color: #ffffff;
+      border-color: #ffffff;
+    }
 
-.d8{
-    grid-column: 1/2;
-    border: 2px solid black;
-    /* margin-left: 15px; */
-    grid-row: 4/5;
-    align-content: center;
-    text-align: center;
-    background-color: bisque;
-    font-size: 20px;
-}
+    /* Header / Navbar */
+    .navbar {
+      padding: 32px 0;
+      border-bottom: 2px solid #ffffff;
+      margin-bottom: 0;
+    }
 
-.d9{
-    grid-column: 2/8;
-    grid-row: 4/5;
-    border: 2px solid black;
-    text-align: center;
-    align-content: center;
-}
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+    }
 
-.d12{
-    grid-column: 2/8;
-    border: 2px solid black;
-    text-align: center;
-    align-content: center;
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      text-decoration: none;
+      color: #ffffff;
+    }
 
-}
+    .logo span {
+      font-weight: 300;
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+    }
 
-.d10{
-    border: 2px solid black;
-    text-align: center;
-    align-content: center;
-}
+    .nav-links {
+      display: flex;
+      gap: 48px;
+      list-style: none;
+    }
 
-.d11{
-    border: 2px solid black;
-    text-align: center;
-    align-content: center;
-}
-    </style>
+    .nav-links a {
+      text-decoration: none;
+      color: #ffffff;
+      font-weight: 600;
+      font-size: 1rem;
+      transition: opacity 0.2s;
+      letter-spacing: 0.3px;
+    }
+
+    .nav-links a:hover {
+      opacity: 0.7;
+    }
+
+    /* HERO SECTION — large, bold, image background */
+    .hero {
+      padding: 120px 0 140px 0;
+      background-image: url('https://picsum.photos/id/104/1920/1080'); /* professional event photography (camera, people) */
+      background-size: cover;
+      background-position: center 30%;
+      background-repeat: no-repeat;
+      position: relative;
+      border-bottom: 2px solid #ffffff;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.65);
+      z-index: 1;
+    }
+
+    .hero .container {
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-content {
+      max-width: 780px;
+    }
+
+    .hero-sub {
+      font-size: 1.2rem;
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      font-weight: 600;
+      margin-bottom: 20px;
+      color: #ffffff;
+    }
+
+    .hero h1 {
+      font-size: 5.5rem;
+      line-height: 1.1;
+      margin-bottom: 24px;
+      font-weight: 800;
+    }
+
+    .hero-description {
+      font-size: 1.25rem;
+      margin-bottom: 42px;
+      opacity: 0.9;
+      max-width: 620px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    /* stats bar — clean sharp */
+    .stats-section {
+      background-color: #ffffff;
+      color: #000000;
+      padding: 64px 0;
+      border-bottom: 2px solid #000000;
+    }
+
+    .stats-grid {
+      display: flex;
+      justify-content: space-between;
+      text-align: center;
+      flex-wrap: wrap;
+      gap: 40px;
+    }
+
+    .stat-item {
+      flex: 1;
+      min-width: 180px;
+    }
+
+    .stat-number {
+      font-size: 3.2rem;
+      font-weight: 800;
+      margin-bottom: 8px;
+      letter-spacing: -0.02em;
+    }
+
+    .stat-label {
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      font-weight: 600;
+      letter-spacing: 1px;
+    }
+
+    /* Services section */
+    .services {
+      padding: 110px 0;
+      background-color: #000000;
+      border-bottom: 2px solid #ffffff;
+    }
+
+    .section-title {
+      font-size: 3.4rem;
+      font-weight: 800;
+      margin-bottom: 20px;
+      letter-spacing: -0.02em;
+    }
+
+    .section-sub {
+      font-size: 1.2rem;
+      max-width: 650px;
+      margin-bottom: 64px;
+      color: #dddddd;
+      border-left: 4px solid #ffffff;
+      padding-left: 24px;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 48px;
+    }
+
+    .service-card {
+      background-color: #111111;
+      border: 1px solid #333333;
+      padding: 40px 32px;
+      transition: transform 0.2s ease, border-color 0.2s;
+    }
+
+    .service-card:hover {
+      border-color: #ffffff;
+      transform: translateY(-6px);
+    }
+
+    .service-icon {
+      font-size: 3rem;
+      margin-bottom: 28px;
+      font-weight: 400;
+    }
+
+    .service-title {
+      font-size: 1.8rem;
+      margin-bottom: 16px;
+      font-weight: 700;
+    }
+
+    .service-desc {
+      color: #cccccc;
+      line-height: 1.5;
+      margin-bottom: 24px;
+    }
+
+    .service-link {
+      text-decoration: none;
+      font-weight: 700;
+      color: #ffffff;
+      border-bottom: 2px solid #ffffff;
+      padding-bottom: 4px;
+      display: inline-block;
+    }
+
+    /* Featured Work / Portfolio (image heavy) */
+    .portfolio {
+      padding: 110px 0;
+      background-color: #ffffff;
+      color: #000000;
+      border-bottom: 2px solid #000000;
+    }
+
+    .portfolio .section-title,
+    .portfolio .section-sub {
+      color: #000000;
+    }
+
+    .portfolio .section-sub {
+      border-left-color: #000000;
+      color: #333333;
+    }
+
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+      margin-top: 24px;
+    }
+
+    .portfolio-item {
+      background-color: #f5f5f5;
+      border: 1px solid #cccccc;
+      overflow: hidden; /* keeps image edges sharp — no radius anyway */
+    }
+
+    .portfolio-img {
+      width: 100%;
+      height: 280px;
+      object-fit: cover;
+      display: block;
+      filter: grayscale(100%);
+      transition: filter 0.3s ease, transform 0.25s;
+    }
+
+    .portfolio-item:hover .portfolio-img {
+      filter: grayscale(0%);
+      transform: scale(1.02);
+    }
+
+    .portfolio-info {
+      padding: 28px 24px;
+    }
+
+    .portfolio-info h3 {
+      font-size: 1.5rem;
+      margin-bottom: 8px;
+      font-weight: 700;
+    }
+
+    .portfolio-info p {
+      color: #444444;
+    }
+
+    /* Testimonials - bold black & white */
+    .testimonials {
+      padding: 110px 0;
+      background-color: #000000;
+      border-bottom: 2px solid #ffffff;
+    }
+
+    .testimonial-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 48px;
+      margin-top: 40px;
+    }
+
+    .testimonial-card {
+      background-color: #0a0a0a;
+      border-left: 6px solid #ffffff;
+      padding: 40px 36px;
+    }
+
+    .testimonial-text {
+      font-size: 1.25rem;
+      line-height: 1.5;
+      margin-bottom: 28px;
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 400;
+      font-style: italic;
+      color: #e0e0e0;
+    }
+
+    .testimonial-author {
+      font-weight: 800;
+      font-size: 1rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .testimonial-title {
+      font-size: 0.85rem;
+      color: #aaaaaa;
+      margin-top: 6px;
+    }
+
+    /* CTA Section */
+    .cta-section {
+      padding: 100px 0;
+      background-color: #ffffff;
+      color: #000000;
+      text-align: center;
+      border-bottom: 2px solid #000000;
+    }
+
+    .cta-section h2 {
+      font-size: 3rem;
+      margin-bottom: 24px;
+      font-weight: 800;
+    }
+
+    .cta-section p {
+      font-size: 1.2rem;
+      max-width: 600px;
+      margin: 0 auto 40px auto;
+      color: #222222;
+    }
+
+    /* Footer */
+    .footer {
+      background-color: #000000;
+      padding: 64px 0 48px;
+      color: #dddddd;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 48px;
+      margin-bottom: 56px;
+    }
+
+    .footer-col h4 {
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 24px;
+      color: #ffffff;
+    }
+
+    .footer-col p, .footer-col ul {
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+
+    .footer-col ul {
+      list-style: none;
+    }
+
+    .footer-col li {
+      margin-bottom: 12px;
+    }
+
+    .footer-col a {
+      text-decoration: none;
+      color: #bbbbbb;
+      transition: color 0.2s;
+    }
+
+    .footer-col a:hover {
+      color: #ffffff;
+    }
+
+    .copyright {
+      text-align: center;
+      padding-top: 32px;
+      border-top: 1px solid #2a2a2a;
+      font-size: 0.85rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .container {
+        padding: 0 30px;
+      }
+      .hero h1 {
+        font-size: 4rem;
+      }
+      .portfolio-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav-container {
+        flex-direction: column;
+        gap: 20px;
+        align-items: center;
+      }
+      .nav-links {
+        gap: 32px;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      .hero {
+        padding: 80px 0 100px;
+      }
+      .hero h1 {
+        font-size: 3rem;
+      }
+      .stats-grid {
+        flex-direction: column;
+        gap: 32px;
+      }
+      .testimonial-grid {
+        grid-template-columns: 1fr;
+      }
+      .portfolio-grid {
+        grid-template-columns: 1fr;
+      }
+      .footer-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .services-grid {
+        gap: 32px;
+      }
+    }
+  </style>
 </head>
 <body>
-	<div><h1>This is github tutorial</h1></div>
-    <div class="main">
-        <div class="d1">Logo</div>
-        <div class="d2">2</div>
-        <div class="d3">21</div>
-        <div class="d4">3</div>
-        <div class="d5">4</div>
-        <div class="d6">5</div>
-        <div class="d7">6</div>
-        <div class="d10">7</div>
-        <div class="d11">8</div>
-	<div class="d8">Navigation</div>
-        <div class="d9">content</div>
-        <div class="d12">Footer</div>
+
+<!-- Navigation -->
+<header>
+  <div class="navbar">
+    <div class="container nav-container">
+      <a href="#" class="logo">NEXUS<span> // events</span></a>
+      <ul class="nav-links">
+        <li><a href="#hero">HOME</a></li>
+        <li><a href="#services">SERVICES</a></li>
+        <li><a href="#portfolio">PORTFOLIO</a></li>
+        <li><a href="#testimonials">CLIENTS</a></li>
+        <li><a href="#contact">CONTACT</a></li>
+      </ul>
     </div>
+  </div>
+</header>
+
+<main>
+  <!-- Hero Section -->
+  <section id="hero" class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-sub">PRECISION · ATMOSPHERE · LEGACY</div>
+        <h1>Where vision meets<br>exceptional execution.</h1>
+        <p class="hero-description">Global event management built on precision, creativity, and flawless delivery. From intimate gatherings to large-scale conferences — we craft moments that resonate.</p>
+        <div class="hero-buttons">
+          <a href="#" class="btn btn-light">DISCOVER OUR WORK</a>
+          <a href="#" class="btn btn-dark">TALK TO STRATEGIST</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Section — black text on white -->
+  <section class="stats-section">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-item">
+          <div class="stat-number">750+</div>
+          <div class="stat-label">SUCCESSFUL EVENTS</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">42</div>
+          <div class="stat-label">GLOBAL DESTINATIONS</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">98%</div>
+          <div class="stat-label">CLIENT RETENTION</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">15+</div>
+          <div class="stat-label">YEARS OF EXCELLENCE</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Section (detailed) -->
+  <section id="services" class="services">
+    <div class="container">
+      <h2 class="section-title">Core competencies.</h2>
+      <div class="section-sub">End-to-end production, strategic consulting & immersive design — all executed with zero compromise.</div>
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-icon">◈</div>
+          <h3 class="service-title">Strategic<br>Planning</h3>
+          <p class="service-desc">Comprehensive roadmap, budget architecture, risk management, and vendor alignment — every detail optimized.</p>
+          <a href="#" class="service-link">LEARN MORE →</a>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">◈</div>
+          <h3 class="service-title">Creative<br>Production</h3>
+          <p class="service-desc">Immersive scenography, lighting design, audio-visual storytelling, and custom staging that amplifies your narrative.</p>
+          <a href="#" class="service-link">LEARN MORE →</a>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">◈</div>
+          <h3 class="service-title">On‑Site<br>Management</h3>
+          <p class="service-desc">White-glove execution, real-time logistics, guest journey orchestration, and 24/7 command center support.</p>
+          <a href="#" class="service-link">LEARN MORE →</a>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">◈</div>
+          <h3 class="service-title">Brand<br>Experiences</h3>
+          <p class="service-desc">Curated activations, product launches, and bespoke galas that transform corporate identity into live emotion.</p>
+          <a href="#" class="service-link">LEARN MORE →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Portfolio / Featured Work (images from internet - Lorem Picsum high quality + unsplash-like) -->
+  <section id="portfolio" class="portfolio">
+    <div class="container">
+      <h2 class="section-title">Signature moments.</h2>
+      <div class="section-sub">Selected projects — conferences, festivals, private celebrations with unparalleled aesthetics.</div>
+      <div class="portfolio-grid">
+        <div class="portfolio-item">
+          <img class="portfolio-img" src="https://picsum.photos/id/20/800/600" alt="Corporate gala event management">
+          <div class="portfolio-info">
+            <h3>GALAXY FORUM 2025</h3>
+            <p>Global tech summit | 3,200 attendees</p>
+          </div>
+        </div>
+        <div class="portfolio-item">
+          <img class="portfolio-img" src="https://picsum.photos/id/36/800/600" alt="Fashion show black and white">
+          <div class="portfolio-info">
+            <h3>HAUTE COUTURE NIGHT</h3>
+            <p>Luxury fashion showcase | Paris</p>
+          </div>
+        </div>
+        <div class="portfolio-item">
+          <img class="portfolio-img" src="https://picsum.photos/id/42/800/600" alt="Music festival stage">
+          <div class="portfolio-info">
+            <h3>ECHO FESTIVAL</h3>
+            <p>International music & arts | 15k visitors</p>
+          </div>
+        </div>
+        <div class="portfolio-item">
+          <img class="portfolio-img" src="https://picsum.photos/id/26/800/600" alt="Corporate retreat">
+          <div class="portfolio-info">
+            <h3>LEADERSHIP RETREAT</h3>
+            <p>Executive offsite & strategy sessions</p>
+          </div>
+        </div>
+        <div class="portfolio-item">
+          <img class="portfolio-img" src="https://picsum.photos/id/58/800/600" alt="Wedding event design">
+          <div class="portfolio-info">
+            <h3>ETERNITY WEDDING</h3>
+            <p>Design-forward ceremony + reception</p>
+          </div>
+        </div>
+        <div class="portfolio-item">
+          <img class="portfolio-img" src="https://picsum.photos/id/66/800/600" alt="Product launch event">
+          <div class="portfolio-info">
+            <h3>VELOCITY LAUNCH</h3>
+            <p>Automotive brand reveal, 800 guests</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials - authentic black/white style -->
+  <section id="testimonials" class="testimonials">
+    <div class="container">
+      <h2 class="section-title">Voices of trust.</h2>
+      <div class="section-sub">What global partners say about working with Nexus Events.</div>
+      <div class="testimonial-grid">
+        <div class="testimonial-card">
+          <div class="testimonial-text">“Nexus didn’t just manage our conference — they elevated our brand's entire perception. The precision, communication, and creative direction were world‑class. Every detail, from staging to delegate flow, was flawless.”</div>
+          <div class="testimonial-author">— VICTORIA CHENG</div>
+          <div class="testimonial-title">CMO, AETHER GLOBAL</div>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-text">“We entrusted them with our most complex international summit. Their team’s ability to orchestrate across time zones, handle live changes, and maintain the highest production value is unmatched. Absolute professionals.”</div>
+          <div class="testimonial-author">— JONAS RIVIERA</div>
+          <div class="testimonial-title">EVP, NORDIC CAPITAL</div>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-text">“The bespoke gala Nexus designed for our 30th anniversary was breathtaking. Every guest felt immersed in a cinematic experience. From lighting to culinary coordination, they delivered excellence.”</div>
+          <div class="testimonial-author">— ELENA MOREAU</div>
+          <div class="testimonial-title">FOUNDER, MAISON ELENA</div>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-text">“Working with Nexus gave us peace of mind. Their rigorous planning and real-time crisis management turned a high-pressure product launch into a landmark success. Highly recommended.”</div>
+          <div class="testimonial-author">— MARCUS THORNE</div>
+          <div class="testimonial-title">CEO, THORNE TECH</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Call to Action -->
+  <section id="contact" class="cta-section">
+    <div class="container">
+      <h2>Ready to create the extraordinary?</h2>
+      <p>Let's engineer an experience that leaves a lasting impression. Reach out to our team for a bespoke proposal.</p>
+      <a href="#" class="btn btn-dark" style="background:#000; color:#fff; border:2px solid #000;">START YOUR JOURNEY →</a>
+    </div>
+  </section>
+</main>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4>NEXUS EVENTS</h4>
+        <p>Global event architecture & creative production. Transforming visions into immersive realities.</p>
+      </div>
+      <div class="footer-col">
+        <h4>CONTACT</h4>
+        <ul>
+          <li>hello@nexusevents.com</li>
+          <li>+1 (212) 555 0970</li>
+          <li>41 Madison Ave, New York</li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>EXPLORE</h4>
+        <ul>
+          <li><a href="#">Services</a></li>
+          <li><a href="#">Case studies</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Press</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>LEGAL</h4>
+        <ul>
+          <li><a href="#">Privacy policy</a></li>
+          <li><a href="#">Terms of service</a></li>
+          <li><a href="#">Cookie settings</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="copyright">
+      <p>© 2026 NEXUS EVENT MANAGEMENT — Monochrome aesthetics, uncompromised quality. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
 </body>
 </html>
